@@ -26,6 +26,19 @@
   gap: 14px;
 }
 
+.nav-link {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #143D60;
+  text-decoration: none;
+  margin-right: 10px;
+  transition: color 0.3s;
+}
+
+.nav-link:hover {
+  color: #ff5a00;
+}
+
 .nav-avatar {
   width: 44px;
   height: 44px;

@@ -30,10 +30,14 @@ const LearningPath = () => {
     const userIdFromToken = parsedUser?.id || userId;
 
     useEffect(() => {
-        if (careerSlug) {
+        if (!careerSlug) {
+            const savedSlug = localStorage.getItem('activeCareerSlug') || 'Data Scientist';
+            navigate(`/learningpath/${encodeURIComponent(savedSlug)}`, { replace: true });
+        } else {
+            localStorage.setItem('activeCareerSlug', careerSlug);
             fetchLearningPath();
         }
-    }, [careerSlug]);
+    }, [careerSlug, navigate]);
 
     const fetchLearningPath = async () => {
         try {
