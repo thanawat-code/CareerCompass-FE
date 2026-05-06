@@ -19,6 +19,7 @@ const LearningPath = () => {
     const [selectedStage, setSelectedStage] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [noPathSelected, setNoPathSelected] = useState(false);
     const [updatingProgress, setUpdatingProgress] = useState(false);
     const [showCancelConfirm, setShowCancelConfirm] = useState(false);
     const [showRetakeConfirm, setShowRetakeConfirm] = useState(false);
@@ -31,9 +32,15 @@ const LearningPath = () => {
 
     useEffect(() => {
         if (!careerSlug) {
-            const savedSlug = localStorage.getItem('activeCareerSlug') || 'Data Scientist';
-            navigate(`/learningpath/${encodeURIComponent(savedSlug)}`, { replace: true });
+            const savedSlug = localStorage.getItem('activeCareerSlug');
+            if (savedSlug) {
+                navigate(`/learningpath/${encodeURIComponent(savedSlug)}`, { replace: true });
+            } else {
+                setNoPathSelected(true);
+                setLoading(false);
+            }
         } else {
+            setNoPathSelected(false);
             localStorage.setItem('activeCareerSlug', careerSlug);
             fetchLearningPath();
         }
@@ -158,6 +165,30 @@ const LearningPath = () => {
             navigateToQuiz();
         }
     };
+
+    if (noPathSelected) {
+        return (
+            <div className="learning-path-container">
+                <div className="lp-error" style={{ padding: '60px 20px' }}>
+                    <div className="lp-error-icon" style={{ fontSize: '64px', marginBottom: '20px' }}>🧭</div>
+                    <h2 style={{ fontSize: '2rem', marginBottom: '15px', color: '#143D60' }}>คุณยังไม่ได้เริ่มเส้นทางอาชีพ</h2>
+                    <p style={{ fontSize: '1.1rem', color: '#666', marginBottom: '30px' }}>
+                        ทำแบบทดสอบเพื่อค้นหาอาชีพที่ใช่ และรับ Learning Path ของคุณ
+                    </p>
+                    <button 
+                        onClick={() => navigate('/home')}
+                        style={{
+                            background: '#ff5a00', color: 'white', border: 'none',
+                            padding: '12px 32px', borderRadius: '25px',
+                            fontSize: '1.1rem', fontWeight: '600', cursor: 'pointer'
+                        }}
+                    >
+                        ไปทำแบบทดสอบกันเลย
+                    </button>
+                </div>
+            </div>
+        );
+    }
 
     if (loading) {
         return (
