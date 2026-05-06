@@ -31,6 +31,7 @@ function Navbar() {
       <div className="nav-menu">
         {token ? (
           <>
+            <Link to="/career-list" className="nav-link">Recommended Careers</Link>
             <Link to="/learningpath" className="nav-link">My Learning Path</Link>
             <img src={avatarUrl} alt={profileName} className="nav-avatar" />
             <button type="button" className="btn-logout" onClick={handleLogout}>
