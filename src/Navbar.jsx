@@ -20,7 +20,6 @@ function Navbar() {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
     localStorage.removeItem('user_id');
-    localStorage.removeItem('activeCareerSlug');
     navigate('/');
   };
 

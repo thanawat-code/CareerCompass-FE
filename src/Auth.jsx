@@ -75,7 +75,6 @@ function Auth() {
       const data = await parseResponse(res);
       localStorage.setItem('token', data.token);
       localStorage.setItem('user', JSON.stringify(data.user));
-      localStorage.removeItem('activeCareerSlug');
       navigate('/home');
     } catch (error) {
       setLoginError(error.message);
