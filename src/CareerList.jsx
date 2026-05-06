@@ -11,8 +11,25 @@ function CareerList() { // ✅ เปลี่ยนชื่อฟังก์�
   const location = useLocation();
   const navigate = useNavigate();
 
-  // รับข้อมูลเหมือนเดิม
-  const resultData = location.state?.result;
+  // Get user info to form storage key
+  const storedUser = localStorage.getItem('user');
+  const parsedUser = storedUser ? JSON.parse(storedUser) : null;
+  const userId = parsedUser?.id || localStorage.getItem('user_id');
+  const storageKey = userId ? `recommendedCareers_${userId}` : 'recommendedCareers_guest';
+
+  // รับข้อมูลเหมือนเดิม หรือจาก localStorage
+  let resultData = location.state?.result;
+  if (!resultData) {
+    const savedData = localStorage.getItem(storageKey);
+    if (savedData) {
+      try {
+        resultData = JSON.parse(savedData);
+      } catch (e) {
+        console.error("Failed to parse saved career data");
+      }
+    }
+  }
+
   const careers = resultData?.recommended_careers || [];
 
   useEffect(() => {

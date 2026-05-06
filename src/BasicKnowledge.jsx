@@ -37,11 +37,15 @@ function BasicKnowledge() {
 
       const data = await response.json();
 
-      // 3. (Optional) บันทึกผลลัพธ์ที่ได้จาก AI ลง Context เพื่อเอาไปโชว์หน้าถัดไป
-      // updateUserData("results", data.recommended_careers);
+      // 3. Save result to localStorage to persist the career list
+      const storedUser = localStorage.getItem('user');
+      const parsedUser = storedUser ? JSON.parse(storedUser) : null;
+      const userId = parsedUser?.id || localStorage.getItem('user_id');
+      const storageKey = userId ? `recommendedCareers_${userId}` : 'recommendedCareers_guest';
+      localStorage.setItem(storageKey, JSON.stringify(data));
 
       // 4. ไปหน้าผลลัพธ์
-      navigate("/career-list", { state: { result: data } }); // ส่งผลลัพธ์ไปผ่าน state ของ router ก็ได้
+      navigate("/career-list", { state: { result: data } });
 
     } catch (error) {
       console.error("Error submitting form:", error);

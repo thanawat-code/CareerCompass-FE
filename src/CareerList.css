@@ -91,3 +91,54 @@
     background: #ff6b00;
     color: white;
 }
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .career-list-container {
+    padding: 0 15px;
+    margin: 20px auto;
+  }
+
+  .career-card {
+    padding: 16px;
+    gap: 12px;
+  }
+
+  .career-icon-box {
+    width: 48px;
+    height: 48px;
+  }
+
+  .career-icon-box .icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .career-info h3 {
+    font-size: 1.1rem;
+    margin-bottom: 4px;
+  }
+
+  .career-info p {
+    font-size: 0.85rem;
+  }
+
+  .arrow-icon {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .career-card {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .career-info {
+    text-align: center;
+  }
+
+  .arrow-icon {
+    display: none;
+  }
+}

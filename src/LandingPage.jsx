@@ -14,6 +14,9 @@ import img8 from "./assets/Consul_ESFJ.png";
 import playIcon from "./assets/play-icon.png";
 
 function LandingPage() {
+  const token = localStorage.getItem('token');
+  const targetRoute = token ? "/home" : "/login";
+
   return (
     <div className="landing-page">
       <Navbar />
@@ -28,7 +31,7 @@ function LandingPage() {
             ค้นพบตัวตน บุคลิกภาพ และความถนัดของคุณ
           </p>
 
-          <Link to="/login" className="cta-btn">
+          <Link to={targetRoute} className="cta-btn">
             เริ่มต้นใช้งาน
           </Link>
         </div>
@@ -63,7 +66,7 @@ function LandingPage() {
               ให้ Learning Path นำทางคุณจากพื้นฐาน สู่ความเชี่ยวชาญ
             </p>
 
-            <Link to="/login" className="play-btn">
+            <Link to={targetRoute} className="play-btn">
               เริ่มต้นใช้งาน
             </Link>
           </div>
@@ -88,7 +91,7 @@ function LandingPage() {
               ให้ AI ช่วยวิเคราะห์บุคลิก ความถนัด เพื่อแนะนำอาชีพที่เหมาะกับคุณ
             </p>
 
-            <Link to="/login" className="play-btn">
+            <Link to={targetRoute} className="play-btn">
               เริ่มต้นใช้งาน
             </Link>
           </div>
