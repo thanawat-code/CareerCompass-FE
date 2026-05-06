@@ -31,8 +31,10 @@ const LearningPath = () => {
     const userIdFromToken = parsedUser?.id || userId;
 
     useEffect(() => {
+        const storageKey = userIdFromToken ? `activeCareerSlug_${userIdFromToken}` : 'activeCareerSlug_guest';
+
         if (!careerSlug) {
-            const savedSlug = localStorage.getItem('activeCareerSlug');
+            const savedSlug = localStorage.getItem(storageKey);
             if (savedSlug) {
                 navigate(`/learningpath/${encodeURIComponent(savedSlug)}`, { replace: true });
             } else {
@@ -41,10 +43,10 @@ const LearningPath = () => {
             }
         } else {
             setNoPathSelected(false);
-            localStorage.setItem('activeCareerSlug', careerSlug);
+            localStorage.setItem(storageKey, careerSlug);
             fetchLearningPath();
         }
-    }, [careerSlug, navigate]);
+    }, [careerSlug, navigate, userIdFromToken]);
 
     const fetchLearningPath = async () => {
         try {
@@ -91,7 +93,7 @@ const LearningPath = () => {
             const url = userIdFromToken
                 ? `${API_BASE}/learning-path/${encodeURIComponent(slug)}?user_id=${userIdFromToken}`
                 : `${API_BASE}/learning-path/${encodeURIComponent(slug)}`;
-            
+
             const updatedRes = await fetch(url);
             if (updatedRes.ok) {
                 const newData = await updatedRes.json();
@@ -175,7 +177,7 @@ const LearningPath = () => {
                     <p style={{ fontSize: '1.1rem', color: '#666', marginBottom: '30px' }}>
                         ทำแบบทดสอบเพื่อค้นหาอาชีพที่ใช่ และรับ Learning Path ของคุณ
                     </p>
-                    <button 
+                    <button
                         onClick={() => navigate('/home')}
                         style={{
                             background: '#ff5a00', color: 'white', border: 'none',
@@ -408,7 +410,7 @@ const LearningPath = () => {
                             <div className="lp-modal-content">
                                 <h2 className="lp-modal-title">ยืนยันการยกเลิก</h2>
                                 <p className="lp-modal-message">
-                                    คุณแน่ใจหรือไม่ว่าต้องการยกเลิกเส้นทางการเรียนรู้นี้? 
+                                    คุณแน่ใจหรือไม่ว่าต้องการยกเลิกเส้นทางการเรียนรู้นี้?
                                     ความคืบหน้าของคุณจะยังคงอยู่ แต่คุณจะกลับไปยังหน้าหลัก
                                 </p>
                             </div>
