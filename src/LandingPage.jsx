@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./Landingpage.css";
-import Navbar from "./Navbar";
 
 import img1 from "./assets/Advocate_INFJ.png";
 import img2 from "./assets/Debater_ENTP.png";
@@ -19,7 +18,6 @@ function LandingPage() {
 
   return (
     <div className="landing-page">
-      <Navbar />
 
       {/* ===== HERO SECTION ===== */}
       <section className="hero">
