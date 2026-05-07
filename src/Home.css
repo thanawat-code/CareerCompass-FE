@@ -1,190 +1,263 @@
-/* ===============================
-   Layout
-================================ */
+/* ============================================================
+   HOME — MBTI Selection & Progress
+   ============================================================ */
+
+/* ── Layout ── */
 .home-container {
-  margin-top: 100px;
+  margin-top: var(--navbar-height, 72px);
   margin-left: auto;
   margin-right: auto;
   max-width: 1100px;
-  padding: 40px 20px;
+  padding: 60px 24px 80px;
   text-align: center;
+  animation: fadeInUp 0.5s ease-out both;
 }
 
-/* ===============================
-   Hero
-================================ */
+/* ── Hero Title ── */
 .hero-title {
-  font-size: 40px;
-  font-weight: 700;
-  margin-bottom: 50px;
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 800;
+  margin-bottom: 56px;
+  color: var(--gray-900);
+  letter-spacing: -0.5px;
+  line-height: 1.3;
 }
 
 .hero-title span {
-  color: #ff6b00;
+  color: transparent;
+  background: linear-gradient(135deg, var(--brand-primary) 0%, #FF9A3C 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
 }
 
-/* ===============================
-   Progress Bar
-================================ */
+/* ============================================================
+   PROGRESS BAR
+   ============================================================ */
 .progress-container {
   position: relative;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  max-width: 900px;
-  margin: 0 auto 60px;
+  max-width: 820px;
+  margin: 0 auto 64px;
 }
 
-/* เส้นฐาน (สีเทา) */
+/* Base line (gray) */
 .progress-line {
   position: absolute;
-  top: 40px;
-  left: 60px;
-  right: 60px;
-  height: 2px;
-  background: #d9d9d9;
+  top: 38px;
+  left: 80px;
+  right: 80px;
+  height: 3px;
+  background: var(--gray-200);
+  border-radius: var(--radius-full);
   z-index: 0;
   overflow: hidden;
 }
 
-/* เส้น progress (สีส้ม) */
+/* Filled line (orange) */
 .progress-line-fill {
   height: 100%;
-  background: #ff6b00;
-  width: 0; /* default */
-  transition: width 0.3s ease-in-out;
+  background: linear-gradient(90deg, var(--brand-primary) 0%, var(--brand-primary-light) 100%);
+  border-radius: var(--radius-full);
+  transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* ===============================
-   Step
-================================ */
+/* ── Step ── */
 .progress-step {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 200px;
+  width: 180px;
   z-index: 1;
 }
 
 .progress-circle {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  background: #f7e8dc;
+  width: 76px;
+  height: 76px;
+  border-radius: var(--radius-full);
+  background: var(--gray-100);
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 3px solid transparent;
+  border: 3px solid var(--gray-200);
+  transition: all var(--transition);
+  box-shadow: var(--shadow-sm);
 }
 
 .progress-circle img {
-  width: 38px;
-  height: 38px;
+  width: 36px;
+  height: 36px;
 }
 
-/* ข้อความใต้ icon */
 .progress-step span {
-  margin-top: 14px;
-  font-size: 18px;
+  margin-top: 12px;
+  font-size: 0.9rem;
   font-weight: 600;
-  color: #0b2c4a;
+  color: var(--gray-400);
   text-align: center;
+  transition: color var(--transition);
 }
 
-/* active step (แบบสอบถาม) */
+/* Active step */
 .progress-step.active .progress-circle {
-  border-color: #ff6b00;
+  background: linear-gradient(135deg, #FFF5EE 0%, #FFE8D6 100%);
+  border-color: var(--brand-primary);
+  box-shadow: 0 0 0 6px var(--brand-primary-muted), var(--shadow-sm);
+  animation: pulse-glow 2.5s infinite;
 }
 
 .progress-step.active span {
-  color: #ff6b00;
+  color: var(--brand-primary);
   font-weight: 700;
 }
 
-/* ===============================
-   MBTI Card
-================================ */
+/* ============================================================
+   MBTI CARD
+   ============================================================ */
 .mbti-card {
-  border: 2px solid #ff6b00;
-  border-radius: 20px;
-  padding: 30px;
+  background: var(--bg-card);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-xl);
+  padding: 40px;
+  box-shadow: var(--shadow-md);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Accent top stripe */
+.mbti-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--brand-primary) 0%, var(--brand-primary-light) 100%);
 }
 
 .mbti-card h2 {
-  font-size: 28px;
-  font-weight: 700;
-  margin-bottom: 24px;
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin-bottom: 28px;
+  color: var(--brand-navy);
 }
 
-/* MBTI Grid */
+/* ── MBTI Grid ── */
 .mbti-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
-  margin-bottom: 30px;
+  gap: 12px;
+  margin-bottom: 32px;
 }
 
-/* MBTI Button */
+/* ── MBTI Button ── */
 .mbti-btn {
-  padding: 12px 0;
-  border-radius: 10px;
-  border: none;
-  background: #0b2c4a;
-  color: #ffffff;
-  font-weight: 600;
+  padding: 14px 0;
+  border-radius: var(--radius-md);
+  border: 1.5px solid var(--gray-200);
+  background: var(--gray-50);
+  color: var(--brand-navy);
+  font-weight: 700;
+  font-size: 0.95rem;
   cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.mbti-btn.active {
-  background: #ff6b00;
+  transition: all var(--transition-fast);
+  letter-spacing: 0.5px;
 }
 
 .mbti-btn:hover {
-  opacity: 0.9;
+  border-color: var(--brand-primary);
+  background: var(--brand-primary-muted);
+  color: var(--brand-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px var(--brand-primary-glow);
 }
 
-/* ===============================
-   Footer
-================================ */
+.mbti-btn.active {
+  background: linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-primary-light) 100%);
+  color: #fff;
+  border-color: transparent;
+  box-shadow: var(--shadow-brand);
+  transform: translateY(-2px);
+}
+
+/* ── Footer ── */
 .mbti-footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding-top: 4px;
 }
 
 .mbti-link {
-  color: #0b2c4a;
+  color: var(--brand-navy-mid);
   text-decoration: underline;
+  text-underline-offset: 3px;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 0.88rem;
+  transition: color var(--transition-fast);
+}
+
+.mbti-link:hover {
+  color: var(--brand-primary);
 }
 
 .next-btn {
-  background: #ff6b00;
-  color: #ffffff;
+  background: linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-primary-light) 100%);
+  color: #fff;
   border: none;
-  padding: 10px 28px;
-  border-radius: 20px;
+  padding: 12px 32px;
+  border-radius: var(--radius-full);
   font-weight: 700;
+  font-size: 0.95rem;
   cursor: pointer;
-  transition: opacity 0.2s ease;
+  box-shadow: 0 4px 14px var(--brand-primary-glow);
+  transition: all var(--transition);
+}
+
+.next-btn:hover:not(:disabled) {
+  box-shadow: 0 8px 24px var(--brand-primary-glow);
+  transform: translateY(-2px);
 }
 
 .next-btn:disabled {
-  opacity: 0.5;
+  opacity: 0.4;
   cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
 }
 
-/* ===============================
-   Responsive
-================================ */
+/* ── Responsive ── */
 @media (max-width: 900px) {
   .mbti-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(4, 1fr);
   }
 
   .progress-container {
     max-width: 100%;
+  }
+}
+
+@media (max-width: 640px) {
+  .mbti-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .mbti-card {
+    padding: 28px 20px;
+  }
+
+  .progress-step {
+    width: 120px;
+  }
+
+  .progress-circle {
+    width: 60px;
+    height: 60px;
+  }
+
+  .progress-circle img {
+    width: 28px;
+    height: 28px;
   }
 }

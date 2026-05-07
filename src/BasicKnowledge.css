@@ -1,83 +1,102 @@
-/* ไฟล์: src/BasicKnowledge.css */
+/* ============================================================
+   BASIC KNOWLEDGE — Skill Tags & Textarea
+   ============================================================ */
 
-/* ===============================
-   Knowledge Card
-================================ */
+/* ── Knowledge Card ── */
 .knowledge-card {
-  border: 2px solid #ff6b00;
-  border-radius: 20px;
-  padding: 36px;
+  background: var(--bg-card);
+  border-radius: var(--radius-xl);
+  padding: 40px 36px;
   max-width: 900px;
-  margin: 0 auto 70px;
-  background: #ffffff;
+  margin: 0 auto 80px;
+  border: 1px solid var(--gray-200);
+  box-shadow: var(--shadow-md);
+  position: relative;
+  overflow: hidden;
 }
 
-/* ===============================
-   Title & Subtitle
-================================ */
+.knowledge-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--brand-primary) 0%, var(--brand-primary-light) 100%);
+}
+
 .knowledge-card h2 {
-  font-size: 28px;
-  font-weight: 700;
+  font-size: 1.5rem;
+  font-weight: 800;
   margin-bottom: 8px;
-  color: #0b2c4a;
+  color: var(--brand-navy);
   text-align: center;
 }
 
 .knowledge-card-subtitle {
-  margin-bottom: 26px;
-  color: #666;
-  font-size: 20px;
+  margin-bottom: 28px;
+  color: var(--text-muted);
+  font-size: 1rem;
   text-align: center;
 }
 
-/* ===============================
-   Skill Tags
-================================ */
+/* ── Skill Tags ── */
 .skill-group {
   display: flex;
   justify-content: center;
-  gap: 12px;
+  gap: 10px;
   flex-wrap: wrap;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
 }
 
 .skill-box {
-  padding: 10px 16px;
-  border: 2px solid #ff6b00;
-  border-radius: 6px;
-  background: #f7e8dc;
-  color: #ff6b00;
+  padding: 8px 18px;
+  border: 1.5px solid rgba(255, 107, 0, 0.3);
+  border-radius: var(--radius-full);
+  background: var(--brand-primary-muted);
+  color: var(--brand-primary);
   font-weight: 600;
-  font-size: 14px;
+  font-size: 0.85rem;
   cursor: default;
   user-select: none;
   letter-spacing: 0.2px;
+  transition: all var(--transition-fast);
 }
 
-/* ===============================
-   Textarea
-================================ */
+.skill-box:hover {
+  background: rgba(255, 107, 0, 0.15);
+  border-color: var(--brand-primary);
+}
+
+/* ── Textarea ── */
 .knowledge-textarea {
   width: 100%;
   min-height: 140px;
-  border-radius: 14px;
-  border: 1.5px solid #ddd;
-  padding: 16px;
-  font-size: 15px;
-  line-height: 1.6;
+  border-radius: var(--radius-lg);
+  border: 1.5px solid var(--gray-200);
+  padding: 16px 18px;
+  font-size: 0.95rem;
+  line-height: 1.7;
   font-family: inherit;
-  resize: none;
+  color: var(--text-primary);
+  background: var(--gray-50);
+  resize: vertical;
   margin-bottom: 36px;
+  transition: all var(--transition-fast);
 }
 
 .knowledge-textarea:focus {
   outline: none;
-  border-color: #ff6b00;
+  border-color: var(--brand-primary);
+  background: #fff;
+  box-shadow: 0 0 0 3px var(--brand-primary-muted);
 }
 
-/* ===============================
-   Footer Buttons
-================================ */
+.knowledge-textarea::placeholder {
+  color: var(--text-muted);
+}
+
+/* ── Footer ── */
 .knowledge-footer {
   display: flex;
   justify-content: space-between;
@@ -86,54 +105,58 @@
 
 /* Back */
 .back-btn {
-  padding: 10px 26px;
-  border-radius: 20px;
-  border: 1.5px solid #ff6b00;
-  background: #ffffff;
-  color: #ff6b00;
+  padding: 11px 28px;
+  border-radius: var(--radius-full);
+  border: 1.5px solid var(--gray-300);
+  background: transparent;
+  color: var(--text-secondary);
   font-weight: 600;
+  font-family: inherit;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all var(--transition-fast);
 }
 
 .back-btn:hover {
-  background: #fff3ea;
+  border-color: var(--brand-primary);
+  color: var(--brand-primary);
+  background: var(--brand-primary-muted);
 }
 
 /* Confirm */
 .confirm-btn {
-  padding: 10px 30px;
-  border-radius: 20px;
+  padding: 11px 32px;
+  border-radius: var(--radius-full);
   border: none;
-  background: #ff6b00;
-  color: #ffffff;
+  background: linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-primary-light) 100%);
+  color: #fff;
   font-weight: 700;
+  font-family: inherit;
   cursor: pointer;
-  transition: opacity 0.2s ease;
+  box-shadow: 0 4px 14px var(--brand-primary-glow);
+  transition: all var(--transition);
 }
 
-.confirm-btn:hover {
-  opacity: 0.9;
+.confirm-btn:hover:not(:disabled) {
+  box-shadow: 0 8px 24px var(--brand-primary-glow);
+  transform: translateY(-2px);
 }
 
 .confirm-btn:disabled {
-  opacity: 0.5;
+  opacity: 0.4;
   cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
 }
 
-/* ===============================
-   Progress Width
-================================ */
+/* ── Progress Width ── */
 .progress-30 {
   width: 50%;
 }
 
-/* ===============================
-   Responsive
-================================ */
+/* ── Responsive ── */
 @media (max-width: 900px) {
   .knowledge-card {
-    padding: 26px 20px;
+    padding: 28px 20px;
   }
 
   .knowledge-footer {
@@ -144,5 +167,6 @@
   .back-btn,
   .confirm-btn {
     width: 100%;
+    text-align: center;
   }
 }

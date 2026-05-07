@@ -1,277 +1,271 @@
-/* --- Background & Layout --- */
+/* ============================================================
+   CONGRATULATION — Achievement Screen
+   ============================================================ */
+
+/* ── Layout ── */
 .congrats-layout {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #FAFAFA;
-    padding: 40px 20px;
-    font-family: 'Inter', 'Prompt', sans-serif;
-    position: relative;
-    overflow: hidden;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-page);
+  padding: calc(var(--navbar-height, 72px) + 40px) 20px 60px;
+  font-family: inherit;
+  position: relative;
+  overflow: hidden;
+  animation: fadeInUp 0.55s ease-out both;
 }
 
-/* --- Floating Sparks Effect --- */
+/* ── Floating Sparks Effect ── */
 .particles-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    pointer-events: none;
-    z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 1;
 }
 
 .particle {
-    position: absolute;
-    bottom: -20px;
-    background: #FF8C00;
-    border-radius: 50%;
-    box-shadow: 0 0 10px #FF6B00, 0 0 20px rgba(255, 183, 77, 0.5);
-    animation: floatUp linear infinite;
-    opacity: 0;
+  position: absolute;
+  bottom: -20px;
+  background: var(--brand-primary);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--brand-primary), 0 0 20px rgba(255, 183, 77, 0.5);
+  animation: floatUp linear infinite;
+  opacity: 0;
 }
 
 @keyframes floatUp {
-    0% {
-        transform: translateY(0) scale(0.8);
-        opacity: 0;
-    }
-
-    20% {
-        opacity: var(--target-opacity);
-    }
-
-    80% {
-        opacity: var(--target-opacity);
-        transform: translateY(-80vh) scale(1.2);
-    }
-
-    100% {
-        transform: translateY(-120vh) scale(1);
-        opacity: 0;
-    }
+  0% { transform: translateY(0) scale(0.8); opacity: 0; }
+  20% { opacity: var(--target-opacity); }
+  80% { opacity: var(--target-opacity); transform: translateY(-80vh) scale(1.2); }
+  100% { transform: translateY(-120vh) scale(1); opacity: 0; }
 }
 
+/* ── Main Card ── */
 .congrats-wide-card {
-    background: #FFFFFF;
-    width: 100%;
-    max-width: 1100px;
-    border-radius: 24px;
-    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08),
-        0 30px 60px -15px rgba(0, 0, 0, 0.05);
-
-    position: relative;
-    z-index: 10;
-    border: 1px solid #F3F4F6;
-    animation: fadeUp 0.6s ease-out;
+  background: var(--bg-card);
+  width: 100%;
+  max-width: 1060px;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  z-index: 10;
+  border: 1px solid var(--gray-200);
+  animation: fadeInUp 0.6s ease-out;
+  overflow: hidden;
 }
 
+/* ── Top Accent ── */
 .card-accent-line {
-    height: 6px;
-    width: 100%;
-    background: linear-gradient(90deg, #FF6B00, #FFA726);
-    border-radius: 24px 24px 0 0;
+  height: 5px;
+  width: 100%;
+  background: linear-gradient(90deg, var(--brand-primary) 0%, var(--brand-primary-light) 100%);
 }
 
 @keyframes fadeUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
+/* ── Inner Layout ── */
 .card-content-wrapper {
-    display: flex;
-    padding: 80px;
-    gap: 80px;
-    align-items: center;
+  display: flex;
+  padding: 72px;
+  gap: 72px;
+  align-items: center;
 }
 
 .content-main {
-    flex: 1.2;
-    text-align: left;
+  flex: 1.2;
+  text-align: left;
 }
 
 .content-stats {
-    flex: 0.8;
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    padding-left: 60px;
-    border-left: 1px solid #E5E7EB;
+  flex: 0.8;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-left: 56px;
+  border-left: 1px solid var(--gray-200);
 }
 
-/* --- Brand Header (New Section) --- */
+/* ── Brand Header ── */
 .brand-header {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 20px;
 }
 
 .brand-logo {
-    width: 64px;
-    height: 64px;
-    object-fit: contain;
-    border-radius: 12px;
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+  border-radius: var(--radius-md);
 }
 
 .brand-name {
-    font-size: 42px;
-    font-weight: 800;
-    color: #111827;
-    margin: 0;
-    letter-spacing: -1px;
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: var(--gray-900);
+  margin: 0;
+  letter-spacing: -1px;
 }
 
-/* --- Typography --- */
+/* ── Typography ── */
 .main-subtitle {
-    font-size: 18px;
-    color: #6B7280;
-    line-height: 1.7;
-    margin-bottom: 40px;
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.75;
+  margin-bottom: 36px;
 }
 
 .text-highlight {
-    color: #FF6B00;
-    font-weight: 600;
+  color: var(--brand-primary);
+  font-weight: 600;
 }
 
-/* --- Stats section --- */
+/* ── Stats ── */
 .stat-box {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    padding: 24px;
-    background: #FFFFFF;
-    border: 1px solid #F3F4F6;
-    border-radius: 16px;
-    transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 20px;
+  background: var(--gray-50);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-lg);
+  transition: all var(--transition-fast);
 }
 
 .stat-box:hover {
-    border-color: #FFD2B3;
-    box-shadow: 0 4px 12px rgba(255, 107, 0, 0.05);
+  border-color: rgba(255, 107, 0, 0.2);
+  box-shadow: 0 4px 16px var(--brand-primary-muted);
 }
 
 .stat-icon-container {
-    width: 52px;
-    height: 52px;
-    background: #FAFAFA;
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  width: 48px;
+  height: 48px;
+  background: var(--gray-100);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }
 
 .stat-icon-container svg {
-    width: 26px;
-    height: 26px;
+  width: 24px;
+  height: 24px;
+  color: var(--brand-primary);
 }
 
 .stat-text {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
 }
 
 .stat-label {
-    font-size: 14px;
-    color: #9CA3AF;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .stat-value {
-    font-size: 17px;
-    font-weight: 600;
-    color: #1F2937;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--gray-800);
 }
 
-/* --- Buttons --- */
+/* ── Action Buttons ── */
 .action-row {
-    display: flex;
-    gap: 16px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
 }
 
-.btn-solid,
-.btn-ghost {
-    padding: 16px 32px;
-    border-radius: 12px;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: inherit;
+/* Note: btn-solid and btn-ghost are defined here locally to avoid
+   conflict with Navbar's btn-solid/btn-outline classes */
+.congrats-layout .btn-solid,
+.congrats-layout .btn-ghost {
+  padding: 14px 28px;
+  border-radius: var(--radius-md);
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all var(--transition);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: inherit;
 }
 
-.btn-solid {
-    background-color: #FF6B00;
-    color: #FFFFFF;
-    border: none;
+.congrats-layout .btn-solid {
+  background: linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-primary-light) 100%);
+  color: #fff;
+  border: none;
+  box-shadow: 0 4px 14px var(--brand-primary-glow);
 }
 
-.btn-solid:hover {
-    background-color: #E66000;
-    transform: translateY(-1px);
+.congrats-layout .btn-solid:hover {
+  box-shadow: 0 8px 24px var(--brand-primary-glow);
+  transform: translateY(-2px);
 }
 
-.btn-ghost {
-    background-color: transparent;
-    color: #4B5563;
-    border: 1px solid #D1D5DB;
+.congrats-layout .btn-ghost {
+  background: transparent;
+  color: var(--text-secondary);
+  border: 1.5px solid var(--gray-300);
 }
 
-.btn-ghost:hover {
-    background-color: #F9FAFB;
-    color: #111827;
-    border-color: #9CA3AF;
+.congrats-layout .btn-ghost:hover {
+  background: var(--gray-50);
+  color: var(--gray-900);
+  border-color: var(--gray-400);
 }
 
-/* --- Responsive Design --- */
+/* ── Responsive ── */
 @media (max-width: 992px) {
-    .card-content-wrapper {
-        flex-direction: column;
-        padding: 50px 40px;
-        gap: 50px;
-    }
+  .card-content-wrapper {
+    flex-direction: column;
+    padding: 48px 36px;
+    gap: 48px;
+  }
 
-    .content-stats {
-        padding-left: 0;
-        border-left: none;
-        border-top: 1px solid #E5E7EB;
-        padding-top: 50px;
-        width: 100%;
-    }
+  .content-stats {
+    padding-left: 0;
+    border-left: none;
+    border-top: 1px solid var(--gray-200);
+    padding-top: 48px;
+    width: 100%;
+  }
 }
 
 @media (max-width: 600px) {
-    .brand-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 12px;
-    }
+  .brand-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 
-    .brand-name {
-        font-size: 32px;
-    }
+  .brand-name {
+    font-size: 1.8rem;
+  }
 
-    .action-row {
-        flex-direction: column;
-    }
+  .card-content-wrapper {
+    padding: 32px 24px;
+  }
 
-    .btn-solid,
-    .btn-ghost {
-        width: 100%;
-    }
+  .action-row {
+    flex-direction: column;
+  }
+
+  .congrats-layout .btn-solid,
+  .congrats-layout .btn-ghost {
+    width: 100%;
+  }
 }

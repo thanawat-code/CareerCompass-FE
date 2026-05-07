@@ -1,117 +1,181 @@
+/* ============================================================
+   NAVBAR — Modern Glassmorphism Style
+   ============================================================ */
 .navbar {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 72px;
-  background-color: #ffffff;
-  border-bottom: 2px solid #143d60;
+  height: var(--navbar-height, 72px);
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 1px 20px rgba(0, 0, 0, 0.06);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 44px;
+  padding: 0 48px;
   z-index: 1000;
+  transition: box-shadow var(--transition);
 }
 
+/* ── Logo ── */
 .nav-logo {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #143D60;
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: transparent;
+  background: linear-gradient(135deg, var(--brand-navy-mid) 0%, var(--brand-primary) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
   text-decoration: none;
+  letter-spacing: -0.5px;
+  transition: opacity var(--transition);
 }
 
+.nav-logo:hover {
+  opacity: 0.85;
+}
+
+/* ── Menu ── */
 .nav-menu {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 8px;
 }
 
+/* ── Nav Links ── */
 .nav-link {
-  font-size: 1.1rem;
+  font-size: 0.95rem;
   font-weight: 600;
-  color: #143D60;
+  color: var(--gray-600);
   text-decoration: none;
-  margin-right: 10px;
-  transition: color 0.3s;
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  transition: all var(--transition-fast);
+  position: relative;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 14px;
+  right: 14px;
+  height: 2px;
+  background: var(--brand-primary);
+  border-radius: 1px;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform var(--transition-fast);
 }
 
 .nav-link:hover {
-  color: #ff5a00;
+  color: var(--brand-primary);
+  background: var(--brand-primary-muted);
 }
 
+.nav-link:hover::after {
+  transform: scaleX(1);
+}
+
+/* ── Avatar ── */
 .nav-avatar {
-  width: 44px;
-  height: 44px;
-  border-radius: 999px;
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-full);
   object-fit: cover;
-  border: 2px solid #dbe2ec;
+  border: 2px solid var(--gray-200);
+  margin-left: 4px;
+  transition: border-color var(--transition-fast), transform var(--transition-fast);
 }
 
+.nav-avatar:hover {
+  border-color: var(--brand-primary);
+  transform: scale(1.05);
+}
+
+/* ── Logout Button ── */
 .btn-logout {
-  border: 1.5px solid #ff5a00;
-  background: #ffffff;
-  color: #ff5a00;
-  border-radius: 999px;
-  padding: 10px 22px;
-  font-size: 1.15rem;
-  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1.5px solid var(--gray-200);
+  background: var(--bg-card);
+  color: var(--gray-600);
+  border-radius: var(--radius-full);
+  padding: 8px 18px;
+  font-size: 0.88rem;
+  font-weight: 600;
   cursor: pointer;
-  line-height: 1;
+  transition: all var(--transition-fast);
+  margin-left: 4px;
 }
 
 .btn-logout:hover {
-  background: #fff4ec;
+  border-color: #ef4444;
+  color: #ef4444;
+  background: #fef2f2;
 }
 
-.btn-outline,
-.btn-solid {
-  text-decoration: none;
-  padding: 8px 25px;
-  border-radius: 25px;
-  font-weight: 600;
-  transition: 0.3s;
-}
-
+/* ── Auth Buttons ── */
 .btn-outline {
-  background: #ff5a00;
-  color: white;
-  border: 1.5px solid #ff5a00;
+  text-decoration: none;
+  padding: 8px 20px;
+  border-radius: var(--radius-full);
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all var(--transition-fast);
+  border: 1.5px solid var(--gray-200);
+  color: var(--gray-700);
+  background: transparent;
 }
 
 .btn-outline:hover {
-  background: #e65100;
-  border-color: #e65100;
-  color: white;
+  border-color: var(--brand-primary);
+  color: var(--brand-primary);
+  background: var(--brand-primary-muted);
 }
 
 .btn-solid {
-  background: #ff5a00;
-  color: white;
-  border: 1.5px solid #ff5a00;
+  text-decoration: none;
+  padding: 8px 20px;
+  border-radius: var(--radius-full);
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all var(--transition-fast);
+  background: linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-primary-light) 100%);
+  color: #fff;
+  border: 1.5px solid transparent;
+  box-shadow: 0 2px 8px var(--brand-primary-glow);
 }
 
 .btn-solid:hover {
-  background: #e65100;
-  border-color: #e65100;
+  background: linear-gradient(135deg, var(--brand-primary-dark) 0%, var(--brand-primary) 100%);
+  box-shadow: 0 4px 16px var(--brand-primary-glow);
+  transform: translateY(-1px);
 }
 
+/* ── Responsive ── */
 @media (max-width: 768px) {
   .navbar {
-    height: 64px;
-    padding: 0 16px;
+    padding: 0 20px;
   }
 
-  .nav-logo {
-    font-size: 2rem;
+  .nav-link {
+    font-size: 0.85rem;
+    padding: 5px 10px;
   }
 
   .nav-avatar {
-    width: 36px;
-    height: 36px;
+    width: 34px;
+    height: 34px;
   }
 
-  .btn-logout {
-    font-size: 1rem;
-    padding: 8px 14px;
+  .btn-logout,
+  .btn-outline,
+  .btn-solid {
+    font-size: 0.82rem;
+    padding: 7px 14px;
   }
 }

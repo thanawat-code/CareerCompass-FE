@@ -1,165 +1,182 @@
-/* ===============================
-   Progress Bar
-================================ */
-.progress-line {
-  position: absolute;
-  top: 40px;
-  left: 60px;
-  right: 60px;
-  height: 2px;
-  background: #d9d9d9;
-  z-index: 0;
-}
+/* ============================================================
+   APTITUDE — Assessment Card
+   ============================================================ */
 
+/* ── Progress Bar (extends Home.css) ── */
 .progress-line-active {
   position: absolute;
-  top: 40px;
-  left: 60px;
-  width: calc(100% - 120px); 
-  max-width: 50%; 
-  height: 2px;
+  top: 38px;
+  left: 80px;
+  width: calc(100% - 160px);
+  max-width: 50%;
+  height: 3px;
   z-index: 1;
+  overflow: hidden;
+  border-radius: var(--radius-full);
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--brand-primary) 0%, var(--brand-primary-light) 100%);
+  transition: width 0.4s ease;
+  border-radius: var(--radius-full);
+}
+
+.progress-33 { width: 33%; }
+.progress-66 { width: 66%; }
+.progress-99 { width: 99%; }
+
+/* ── Aptitude Card ── */
+.aptitude-card {
+  background: var(--bg-card);
+  border-radius: var(--radius-xl);
+  padding: 40px 36px;
+  margin-top: 24px;
+  border: 1px solid var(--gray-200);
+  box-shadow: var(--shadow-md);
+  position: relative;
   overflow: hidden;
 }
 
-/* เส้นที่ขยับได้ */
-.progress-fill {
-  height: 100%;
-  background: #ff6b00;
-  transition: width 0.3s ease;
-}
-
-/* สถานะ */
-.progress-33 { width: 33%; }
-.progress-66 { width: 56%; }
-.progress-99 { width: 99%; }
-
-
-/* ===============================
-   Aptitude Card
-================================ */
-.aptitude-card {
-  border: 2px solid #ff6b00;
-  border-radius: 20px;
-  padding: 32px;
-  margin-top: 20px;
-  background: #ffffff;
+.aptitude-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--brand-primary) 0%, var(--brand-primary-light) 100%);
 }
 
 .aptitude-card h2 {
   text-align: center;
-  font-size: 28px;
-  font-weight: 700;
-  margin-bottom: 36px;
-  color: #0b2c4a;
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin-bottom: 32px;
+  color: var(--brand-navy);
 }
 
-/* ===============================
-   Question Box
-================================ */
+/* ── Question Box ── */
 .question-box {
-  background: #ffffff;
-  border-radius: 14px;
-  padding: 20px 22px;
-  margin-bottom: 24px;
-  border: 1px solid #e6e6e6;
-  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+  background: var(--gray-50);
+  border-radius: var(--radius-lg);
+  padding: 22px 24px;
+  margin-bottom: 20px;
+  border: 1px solid var(--gray-200);
+  transition: all var(--transition-fast);
 }
 
 .question-box:hover {
-  border-color: #ff6b00;
-  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.05);
+  border-color: rgba(255, 107, 0, 0.3);
+  box-shadow: 0 4px 16px var(--brand-primary-muted);
+  background: #fff;
 }
 
 .question-title {
-  text-align: left;      
-  font-size: 16px;
-  font-weight: 600;
+  text-align: left;
+  font-size: 0.98rem;
+  font-weight: 700;
   margin-bottom: 16px;
-  color: #0b2c4a;
+  color: var(--brand-navy);
+  line-height: 1.5;
 }
 
-/* ===============================
-   Options
-================================ */
+/* ── Options ── */
 .options {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 14px;
+  gap: 10px 20px;
 }
 
 .option {
   display: flex;
   align-items: center;
-  gap: 12px;
-  font-size: 15px;
-  padding: 10px 12px;
-  border-radius: 10px;
+  gap: 10px;
+  font-size: 0.92rem;
+  padding: 9px 12px;
+  border-radius: var(--radius-sm);
   cursor: pointer;
+  transition: background var(--transition-fast);
 }
 
 .option:hover {
-  background: #f7f7f7;
+  background: var(--brand-primary-muted);
 }
 
 .option input {
-  accent-color: #ff6b00;
+  accent-color: var(--brand-primary);
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
 }
 
-/* ===============================
-   Footer
-================================ */
+/* ── Footer ── */
 .aptitude-footer {
-  margin-top: 40px;
-  padding-top: 22px;
-  border-top: 1px solid #e6e6e6;
+  margin-top: 36px;
+  padding-top: 20px;
+  border-top: 1px solid var(--gray-200);
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
 .progress-text {
-  font-size: 14px;
-  color: #666666;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-weight: 500;
 }
 
-/* ===============================
-   Button
-================================ */
+/* ── Buttons ── */
 .next-btn {
-  background: #ff6b00;
-  color: #ffffff;
+  background: linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-primary-light) 100%);
+  color: #fff;
   border: none;
-  padding: 10px 32px;
-  border-radius: 20px;
+  padding: 11px 32px;
+  border-radius: var(--radius-full);
   font-weight: 700;
+  font-family: inherit;
   cursor: pointer;
+  box-shadow: 0 4px 14px var(--brand-primary-glow);
+  transition: all var(--transition);
+}
+
+.next-btn:hover:not(:disabled) {
+  box-shadow: 0 8px 24px var(--brand-primary-glow);
+  transform: translateY(-2px);
 }
 
 .next-btn:disabled {
-  opacity: 0.5;
+  opacity: 0.4;
   cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
 }
 
 .back-btn {
   background: transparent;
-  color: #ff6b00;
-  border: 2px solid #ff6b00;
-  padding: 8px 28px;
-  border-radius: 20px;
-  font-weight: 700;
+  color: var(--text-secondary);
+  border: 1.5px solid var(--gray-300);
+  padding: 10px 26px;
+  border-radius: var(--radius-full);
+  font-weight: 600;
+  font-family: inherit;
   cursor: pointer;
+  transition: all var(--transition-fast);
 }
 
-/* ===============================
-   Responsive
-================================ */
+.back-btn:hover {
+  border-color: var(--brand-primary);
+  color: var(--brand-primary);
+  background: var(--brand-primary-muted);
+}
+
+/* ── Responsive ── */
 @media (max-width: 900px) {
   .options {
     grid-template-columns: 1fr;
   }
 
   .aptitude-card {
-    padding: 26px 20px;
+    padding: 28px 20px;
   }
 }

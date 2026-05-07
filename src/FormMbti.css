@@ -1,117 +1,115 @@
-/* =====================================================
-   Layout
-   ===================================================== */
+/* ============================================================
+   FORM MBTI — MBTI Quiz Form
+   ============================================================ */
 
 .mbti-container {
   max-width: 800px;
   margin: 0 auto;
-  padding-top: 100px;        /* ⭐ ดันลงจาก Navbar */
-  padding-bottom: 60px;
-  font-family: "Prompt", sans-serif;
+  padding-top: calc(var(--navbar-height, 72px) + 48px);
+  padding-bottom: 80px;
+  padding-left: 20px;
+  padding-right: 20px;
+  animation: fadeInUp 0.45s ease-out both;
 }
 
-/* =====================================================
-   Header (แบบสอบถาม MBTI)
-   ===================================================== */
-
+/* ── Header ── */
 .mbti-header {
   text-align: center;
   margin-bottom: 40px;
 }
 
 .mbti-title {
-  font-size: 28px;
-  font-weight: 700;
-  color: #0f2a44;
-  margin-bottom: 10px;
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--brand-navy);
+  margin-bottom: 8px;
+  letter-spacing: -0.5px;
 }
 
 .mbti-subtitle {
-  font-size: 15px;
-  color: #666;
+  font-size: 0.9rem;
+  color: var(--text-muted);
 }
 
-/* =====================================================
-   Question Card
-   ===================================================== */
-
-/* =====================================================
-   Question Card (MBTI) – Hover แบบ Aptitude
-   ===================================================== */
-
+/* ── Question Card ── */
 .question-card {
-  background: #ffffff;
-  border-radius: 14px;
-  padding: 20px 22px;
-  margin-bottom: 24px;
-  border: 1px solid #e6e6e6;
-
-  /* animation */
-  transition: 
-    border-color 0.2s ease,
-    box-shadow 0.2s ease,
-    transform 0.15s ease;
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  padding: 22px 24px;
+  margin-bottom: 18px;
+  border: 1px solid var(--gray-200);
+  transition: all var(--transition-fast);
 }
 
-/* ⭐ Hover effect */
 .question-card:hover {
-  border-color: #ff6b00;
-  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.05);
+  border-color: rgba(255, 107, 0, 0.3);
+  box-shadow: 0 4px 16px var(--brand-primary-muted);
   transform: translateY(-2px);
 }
 
-/* Title */
 .question-title {
-  font-size: 16px;
-  font-weight: 600;
+  font-size: 0.98rem;
+  font-weight: 700;
   margin-bottom: 16px;
-  color: #0b2c4a;
-}
-
-
-/* =====================================================
-   Options
-   ===================================================== */
-
-.option {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  margin-bottom: 12px;
-  cursor: pointer;
+  color: var(--brand-navy);
   line-height: 1.5;
 }
 
-.option input {
-  margin-top: 4px;
-  accent-color: #ff7a00;
+/* ── Options ── */
+.option {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  line-height: 1.5;
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  padding: 6px 8px;
+  border-radius: var(--radius-sm);
+  transition: background var(--transition-fast);
 }
 
-/* =====================================================
-   Submit Button
-   ===================================================== */
+.option:hover {
+  background: var(--brand-primary-muted);
+  color: var(--text-primary);
+}
 
+.option input {
+  margin-top: 3px;
+  accent-color: var(--brand-primary);
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+/* ── Submit Button ── */
 .submit-btn {
   width: 100%;
-  padding: 16px;
-  margin-top: 32px;
+  padding: 15px;
+  margin-top: 28px;
   border: none;
-  border-radius: 12px;
-  background: #ff7a00;
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-primary-light) 100%);
   color: white;
-  font-size: 17px;
-  font-weight: 600;
+  font-size: 1rem;
+  font-weight: 700;
+  font-family: inherit;
   cursor: pointer;
-  transition: background 0.2s ease, transform 0.1s ease;
+  box-shadow: 0 4px 16px var(--brand-primary-glow);
+  transition: all var(--transition);
 }
 
-.submit-btn:hover {
-  background: #e96d00;
-  transform: translateY(-1px);
+.submit-btn:hover:not(:disabled) {
+  box-shadow: 0 8px 28px var(--brand-primary-glow);
+  transform: translateY(-2px);
 }
 
 .submit-btn:disabled {
-  background: #ccc;
+  background: var(--gray-200);
+  color: var(--gray-400);
   cursor: not-allowed;
   transform: none;
+  box-shadow: none;
 }

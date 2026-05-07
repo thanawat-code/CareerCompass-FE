@@ -1,171 +1,286 @@
-.career-list-container {
-  max-width: 800px;
-  margin: 40px auto;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  padding: 0 20px;
+/* ============================================================
+   CAREER LIST — Modern Cards with Hover States
+   ============================================================ */
+
+/* ── Page Wrapper ── */
+.career-list-page {
+  min-height: 100vh;
+  background: var(--bg-page);
 }
 
+/* ── Container (reuses home-container) ── */
+.home-container {
+  margin-top: var(--navbar-height, 72px);
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1100px;
+  padding: 60px 24px 80px;
+  text-align: center;
+  animation: fadeInUp 0.5s ease-out both;
+}
+
+/* ── Hero Title ── */
+.hero-title {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 800;
+  margin-bottom: 8px;
+  color: var(--gray-900);
+  letter-spacing: -0.5px;
+  line-height: 1.3;
+}
+
+.hero-title span {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  margin-top: 8px;
+  letter-spacing: 0;
+}
+
+/* ── Card List ── */
+.career-list-container {
+  max-width: 760px;
+  margin: 48px auto 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 0;
+  text-align: left;
+}
+
+/* ── Career Card ── */
 .career-card {
-  background: white;
-  border-radius: 16px;
-  padding: 24px;
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  padding: 22px 24px;
   display: flex;
   align-items: center;
   gap: 20px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition);
   cursor: pointer;
-  border: 1px solid #f0f0f0;
+  border: 1px solid var(--gray-200);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Left accent on hover */
+.career-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(180deg, var(--brand-primary) 0%, var(--brand-primary-light) 100%);
+  border-radius: 4px 0 0 4px;
+  transform: scaleY(0);
+  transform-origin: center;
+  transition: transform var(--transition);
 }
 
 .career-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(255, 107, 0, 0.15); /* เงาส้มจางๆ */
-  border-color: #ff6b00;
+  box-shadow: 0 12px 32px rgba(255, 107, 0, 0.12), var(--shadow-md);
+  border-color: rgba(255, 107, 0, 0.2);
 }
 
-/* กล่องไอคอนสีส้ม */
+.career-card:hover::before {
+  transform: scaleY(1);
+}
+
+/* ── Icon Box ── */
 .career-icon-box {
-  background: #ff6b00; /* สีส้ม */
-  width: 60px;
-  height: 60px;
-  border-radius: 12px;
+  background: linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-primary-light) 100%);
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-md);
   display: flex;
   justify-content: center;
   align-items: center;
   flex-shrink: 0;
+  box-shadow: 0 4px 12px var(--brand-primary-glow);
+  transition: transform var(--transition);
+}
+
+.career-card:hover .career-icon-box {
+  transform: scale(1.06) rotate(-3deg);
 }
 
 .career-icon-box .icon {
   color: white;
-  width: 32px;
-  height: 32px;
+  width: 28px;
+  height: 28px;
 }
 
-/* ข้อความ */
+/* ── Info Text ── */
 .career-info {
   flex-grow: 1;
   text-align: left;
 }
 
 .career-info h3 {
-  margin: 0 0 8px 0;
-  font-size: 1.2rem;
+  margin: 0 0 6px 0;
+  font-size: 1.05rem;
   font-weight: 700;
-  color: #333;
+  color: var(--brand-navy);
 }
 
 .career-info p {
   margin: 0;
-  font-size: 0.95rem;
-  color: #666;
-  line-height: 1.4;
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
 }
 
-/* ลูกศรขวาสุด */
+/* ── Arrow Icon ── */
 .arrow-icon {
-  font-size: 1.5rem;
-  color: #ccc;
+  font-size: 1.1rem;
+  color: var(--gray-300);
   font-weight: bold;
+  flex-shrink: 0;
+  transition: all var(--transition-fast);
 }
 
+.career-card:hover .arrow-icon {
+  color: var(--brand-primary);
+  transform: translateX(4px);
+}
+
+/* ── Empty State ── */
+.error-message {
+  text-align: center;
+  padding: 60px 20px;
+  background: var(--bg-card);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--gray-200);
+  box-shadow: var(--shadow-sm);
+}
+
+.error-message p {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  margin-bottom: 24px;
+}
+
+.back-btn {
+  background: linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-primary-light) 100%);
+  color: #fff;
+  border: none;
+  padding: 12px 28px;
+  border-radius: var(--radius-full);
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  font-family: inherit;
+  box-shadow: 0 4px 14px var(--brand-primary-glow);
+  transition: all var(--transition);
+}
+
+.back-btn:hover {
+  box-shadow: 0 8px 24px var(--brand-primary-glow);
+  transform: translateY(-2px);
+}
+
+/* ── Footer Action ── */
 .footer-action {
-    margin-top: 30px;
-    margin-bottom: 50px;
+  margin-top: 40px;
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: center;
 }
 
 .back-btn-outline {
-    background: transparent;
-    border: 2px solid #ff6b00;
-    color: #ff6b00;
-    padding: 10px 30px;
-    border-radius: 25px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: 0.3s;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: 1.5px solid var(--gray-300);
+  color: var(--text-secondary);
+  padding: 11px 28px;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+  font-family: inherit;
+  transition: all var(--transition-fast);
 }
 
 .back-btn-outline:hover {
-    background: #ff6b00;
-    color: white;
+  border-color: var(--brand-primary);
+  color: var(--brand-primary);
+  background: var(--brand-primary-muted);
 }
 
-/* Responsive Styles */
+/* ── Responsive ── */
 @media (max-width: 768px) {
   .career-list-container {
-    padding: 0 15px;
-    margin: 20px auto;
+    padding: 0;
   }
 
   .career-card {
-    padding: 16px;
-    gap: 12px;
+    padding: 16px 18px;
+    gap: 14px;
   }
 
   .career-icon-box {
-    width: 48px;
-    height: 48px;
+    width: 46px;
+    height: 46px;
   }
 
   .career-icon-box .icon {
-    width: 24px;
-    height: 24px;
+    width: 22px;
+    height: 22px;
   }
 
   .career-info h3 {
-    font-size: 1.1rem;
-    margin-bottom: 4px;
+    font-size: 0.98rem;
   }
 
   .career-info p {
-    font-size: 0.85rem;
-  }
-
-  .arrow-icon {
-    font-size: 1.2rem;
+    font-size: 0.82rem;
   }
 }
 
 @media (max-width: 480px) {
   .career-card {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .career-info {
-    text-align: center;
+    flex-wrap: wrap;
   }
 
   .arrow-icon {
     display: none;
   }
-}/* ── Modal (Cancel Confirmation) ──────────── */
+}
+
+/* ============================================================
+   MODAL — Confirm Career Path
+   ============================================================ */
 .lp-modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(17, 24, 39, 0.45);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  background: rgba(10, 15, 30, 0.5);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1000;
+  z-index: 1100;
   padding: 1.5rem;
 }
 
 .lp-modal-card {
-  background: white;
-  border-radius: var(--radius-lg);
+  background: var(--bg-card);
+  border-radius: var(--radius-xl);
   width: 100%;
   max-width: 440px;
-  padding: 2.25rem;
+  padding: 2.5rem 2.25rem;
   position: relative;
   box-shadow:
-    0 20px 50px rgba(0, 0, 0, 0.2),
-    0 0 0 1px rgba(0, 0, 0, 0.05);
+    0 24px 64px rgba(0, 0, 0, 0.18),
+    0 0 0 1px rgba(0, 0, 0, 0.04);
   text-align: center;
+  border-top: 4px solid var(--brand-primary);
 }
 
 .lp-modal-close {
@@ -174,15 +289,15 @@
   right: 1.25rem;
   background: var(--gray-100);
   border: none;
-  width: 32px;
-  height: 32px;
+  width: 34px;
+  height: 34px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--gray-600);
+  color: var(--gray-500);
   cursor: pointer;
-  transition: all var(--transition);
+  transition: all var(--transition-fast);
 }
 
 .lp-modal-close:hover {
@@ -200,16 +315,14 @@
 .lp-modal-icon-bg {
   width: 64px;
   height: 64px;
-  background: rgba(220, 38, 38, 0.1);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #dc2626;
 }
 
 .lp-modal-title {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   font-weight: 800;
   color: var(--gray-900);
   margin: 0 0 0.75rem;
@@ -217,26 +330,27 @@
 }
 
 .lp-modal-message {
-  color: var(--gray-600);
-  font-size: 0.95rem;
-  line-height: 1.6;
+  color: var(--text-secondary);
+  font-size: 0.93rem;
+  line-height: 1.7;
   margin: 0 0 2rem;
 }
 
 .lp-modal-actions {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1rem;
+  gap: 0.75rem;
 }
 
 .lp-modal-btn-secondary,
 .lp-modal-btn-danger {
-  padding: 0.75rem 1rem;
+  padding: 0.8rem 1rem;
   border-radius: var(--radius-md);
   font-size: 0.9rem;
   font-weight: 700;
+  font-family: inherit;
   cursor: pointer;
-  transition: all var(--transition);
+  transition: all var(--transition-fast);
   border: none;
 }
 
@@ -251,19 +365,19 @@
 }
 
 .lp-modal-btn-danger {
-  background: linear-gradient(135deg, #dc2626, #ef4444);
+  background: linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-primary-light) 100%);
   color: white;
-  box-shadow: 0 4px 12px rgba(220, 38, 38, 0.25);
+  box-shadow: 0 4px 14px var(--brand-primary-glow);
 }
 
 .lp-modal-btn-danger:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(220, 38, 38, 0.4);
+  box-shadow: 0 8px 24px var(--brand-primary-glow);
 }
 
 @media (max-width: 480px) {
   .lp-modal-card {
-    padding: 1.75rem 1.5rem;
+    padding: 2rem 1.5rem;
   }
 
   .lp-modal-actions {
