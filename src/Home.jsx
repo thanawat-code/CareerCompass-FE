@@ -9,10 +9,10 @@ import aiIcon from "./assets/ai.png";
 import learningIcon from "./assets/learning.png";
 
 const mbtiTypes = [
-  "INTJ","INTP","ENTJ","ENTP",
-  "INFJ","INFP","ENFJ","ENFP",
-  "ISTJ","ISFJ","ESTJ","ESFJ",
-  "ISTP","ISFP","ESTP","ESFP"
+  "INTJ", "INTP", "ENTJ", "ENTP",
+  "INFJ", "INFP", "ENFJ", "ENFP",
+  "ISTJ", "ISFJ", "ESTJ", "ESFJ",
+  "ISTP", "ISFP", "ESTP", "ESFP"
 ];
 
 function Home() {
@@ -34,7 +34,7 @@ function Home() {
       {/* ================= Hero ================= */}
       <h1 className="hero-title">
         ค้นหาอาชีพที่ใช่สำหรับคุณ <br />
-        ด้วยเทคโนโลยี <span>AI</span>
+        ด้วยเทคโนโลยี AI
       </h1>
 
       {/* ================= Progress (แบบสอบถาม) ================= */}

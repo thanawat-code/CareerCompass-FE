@@ -153,7 +153,7 @@
 }
 
 .back-btn {
-  background: transparent;
+  background: #ffffff;
   color: var(--text-secondary);
   border: 1.5px solid var(--gray-300);
   padding: 10px 26px;
@@ -167,7 +167,7 @@
 .back-btn:hover {
   border-color: var(--brand-primary);
   color: var(--brand-primary);
-  background: var(--brand-primary-muted);
+  background: #fff7f2;
 }
 
 /* ── Responsive ── */

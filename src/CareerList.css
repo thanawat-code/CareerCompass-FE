@@ -165,22 +165,22 @@
 }
 
 .back-btn {
-  background: linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-primary-light) 100%);
-  color: #fff;
-  border: none;
+  background: #ffffff;
+  color: var(--brand-primary);
+  border: 1.5px solid var(--brand-primary);
   padding: 12px 28px;
   border-radius: var(--radius-full);
   font-weight: 700;
   font-size: 0.95rem;
   cursor: pointer;
   font-family: inherit;
-  box-shadow: 0 4px 14px var(--brand-primary-glow);
   transition: all var(--transition);
 }
 
 .back-btn:hover {
-  box-shadow: 0 8px 24px var(--brand-primary-glow);
-  transform: translateY(-2px);
+  background: var(--brand-primary);
+  color: #fff;
+  box-shadow: 0 4px 14px var(--brand-primary-glow);
 }
 
 /* ── Footer Action ── */

@@ -155,24 +155,38 @@
 
 .scroll-down img {
   width: 38px;
-  transform: rotate(90deg);
+  transform: rotate(360deg);
   opacity: 0.85;
-  transition: transform var(--transition);
+  transition: opacity var(--transition), transform var(--transition);
 }
 
 .scroll-down:hover img {
   opacity: 1;
-  transform: rotate(90deg) scale(1.12);
+  transform: rotate(180deg) scale(1.12);
 }
 
 @keyframes floatArrow {
-  0%, 100% { transform: translateY(0); }
-  50%       { transform: translateY(10px); }
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(10px);
+  }
 }
 
 @keyframes floatArrowBottom {
-  0%, 100% { transform: translateX(-50%) translateY(0); }
-  50%       { transform: translateX(-50%) translateY(10px); }
+
+  0%,
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
+
+  50% {
+    transform: translateX(-50%) translateY(10px);
+  }
 }
 
 /* ============================================================
@@ -196,7 +210,7 @@
   left: -10%;
   width: 500px;
   height: 500px;
-  background: radial-gradient(ellipse, rgba(255,255,255,0.04) 0%, transparent 70%);
+  background: radial-gradient(ellipse, rgba(255, 255, 255, 0.04) 0%, transparent 70%);
   border-radius: 50%;
   pointer-events: none;
 }
@@ -208,7 +222,7 @@
   right: -5%;
   width: 400px;
   height: 400px;
-  background: radial-gradient(ellipse, rgba(255,107,0,0.08) 0%, transparent 70%);
+  background: radial-gradient(ellipse, rgba(255, 107, 0, 0.08) 0%, transparent 70%);
   border-radius: 50%;
   pointer-events: none;
 }

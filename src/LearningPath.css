@@ -885,7 +885,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #dc2626;
+  color: #dc6026;
 }
 
 .lp-modal-title {
@@ -931,7 +931,7 @@
 }
 
 .lp-modal-btn-danger {
-  background: linear-gradient(135deg, #dc2626, #ef4444);
+  background: linear-gradient(135deg, #f56e00, #fa970c);
   color: white;
   box-shadow: 0 4px 12px rgba(220, 38, 38, 0.25);
 }
