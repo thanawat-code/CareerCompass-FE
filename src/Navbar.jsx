@@ -33,7 +33,6 @@ function Navbar() {
           <>
             <Link to="/career-list" className="nav-link">Career List</Link>
             <Link to="/learningpath" className="nav-link">My Learning Path</Link>
-            <img src={avatarUrl} alt={profileName} className="nav-avatar" />
             <button type="button" className="btn-logout" onClick={handleLogout}>
               Logout
             </button>
